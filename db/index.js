@@ -6,14 +6,9 @@ class DB {
     this.connection = connection;
   }
 
-  // left join for all 3 (Joe will have examples later)
-  // Find all employees, join with roles and departments to display their roles, salaries, departments, and managers
+   // Find all employees, join with roles and departments to display their roles, salaries, departments, and managers
   findAllEmployees() {
     return this.connection.query(
-      // CREATE SELECT STATMENT WITH THE FOLLOWING COLUMNS FROM THREE TABLES.
-      // id, first_name, last_name FROM employee TABLE AND department name from department TABLE AND SELECT salary FROM role TABLE
-      // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
-      // TODO: YOUR CODE HERE
       `select
       e.id
      ,e.first_name
@@ -53,15 +48,6 @@ class DB {
 
   // Update the given employee's role
   updateEmployeeRole(employeeId, roleId) {
-    // console.log("in updateEmployeeRole in indexedDB.js:");
-    // console.log("employeeId: ", employeeId);
-    // console.log("roleID: ", roleId);
-    // console.log(
-    //   `update employee
-    //   set
-    //    role_id = ${roleId}
-    //   where id = ${employeeId}`
-    // );
     return this.connection.query(
       // TODO: YOUR CODE HERE
      `update employee
@@ -83,10 +69,6 @@ class DB {
   // Find all roles, join with departments to display the department name
   findAllRoles() {
     return this.connection.query(
-      // SELECT THE FOLLOWING COLUMNS:
-      // id, title, salary FROM role TABLE AND department name FROM department TABLE
-      // YOU NEED TO USE LEFT JOIN TO JOIN role and department TABLES
-      // TODO: YOUR CODE HERE
       `select
       r.id
      ,r.title
@@ -106,9 +88,7 @@ class DB {
     const salary = role.salary;
     const department_id = role.department_id;
     // console.log(title, salary, department_id);
-    
-    return this.connection.query(
-      // TODO: YOUR CODE HERE
+     return this.connection.query(
       `insert into role(title, salary, department_id)
         values ("${title}", ${salary}, ${department_id})`
     );
@@ -130,10 +110,6 @@ class DB {
   // Create a new department
   createDepartment(department) {
     const departmentName = department.name;
-    // console.log(
-    //   `insert into department(name)
-    //    values ("${departmentName}")`    
-    // )
     return this.connection.query(
       // TODO: YOUR CODE HERE
       `insert into department(name)
